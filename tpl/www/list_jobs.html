@@ -1,0 +1,64 @@
+<!-- inc:head -->
+<style type="text/css">
+.itable
+{
+	border:1px solid #666666;
+	border-collapse:collapse;
+	empty-cells:hide;
+	margin:10px 0 20px;
+}
+.itable td
+{
+	border-bottom:1px solid #666666;
+	border-right:1px solid #666666;
+	color:#333333;
+	padding:6px 10px;
+}
+.t_title{font-weight:bold;font-size:14px;color:red;}
+</style>
+<div class="main">
+	<div class="left"><!-- inc:inc/left --></div>
+	<div class="right">
+		<div class="vmenu"><h3>人才招聘</h3><span>&nbsp;</span></div>
+		<div class="border-notop"><div class="pd5">
+			<!-- $rslist AS $key=>$value -->
+			<div class="line"></div>
+			<div class="t_title">{:$value[title]}</div>
+			<table width="100%" cellspacing="0" cellpadding="0" class="itable">
+			<tr>
+				<td width="50%">招聘人数：{:$value[jnum]}</td>
+				<td>年龄要求：{:$value[age]}</td>
+			</tr>
+			<tr>
+				<td>工作经验：{:$value[jy]}</td>
+				<td>性别要求：{:$value[sex]}</td>
+			</tr>
+			<tr>
+				<td colspan="2">身高要求：{:$value[hight]}</td>
+			</tr>
+			<tr>
+				<td colspan="2">岗位说明：{:$value[note]}<div align="right"><a href="{:site_url('post,set')}ms=apply&subject={:rawurlencode($value[title])}" target="_blank">我要应聘</a>&nbsp; &nbsp;</div></td>
+			</tr>
+			</table>
+
+			<!-- end -->
+            			<div class="line"></div>
+			<!-- if($pagelist && is_array($pagelist) && count($pagelist)>0) -->         
+			<div align="right">
+			<table class="pagelist">
+			<tr>
+            <td width="220" align="left">共{:$pagelist[0]['total']}条 {:$pagelist[0]['currentPage']}/{:$pagelist[0]['totalPage']}</td>
+				<!-- $pagelist AS $key=>$value -->
+				<td><a href="{:$value[url]}" class="{:$value[status] ? 'm' : 'n'}">{:$value[name]}</a></td>
+				<!-- end -->
+                                <td width="230">{:$pagelist[0]['selectPage']}{:$pagelist[0]['inputPage']}</td>
+			</tr>
+			</table>           
+			</div>
+			<!-- end -->
+			<div class="line"></div>
+		</div></div>
+	</div>
+	<div class="clear"></div>
+</div>
+<!-- inc:foot -->

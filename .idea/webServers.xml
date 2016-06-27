@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="6f1b884d-3fb9-4eb5-88ed-71941f78539f" name="张兆国" url="http://qxu2309660096.my3w.com">
+        <fileTransfer host="qxu2309660096.my3w.com" port="21" rootFolder="/htdocs" password="df9cdf9adf9bdf9ddf99df9fdf9edf9bdf9c" username="qxu2309660096">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

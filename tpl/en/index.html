@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><!-- if($sitetitle) -->{:$sitetitle} - <!-- end -->{:$_sys[sitename]}<!-- if($_sys[seotitle]) --> -- {:$_sys[seotitle]}<!-- end --></title>
+<!-- if($_sys[google_site_verification]) --><meta name="google-site-verification" content="{:$_sys[google_site_verification]}" /><!-- end -->
+<!-- if($_sys[yahoo_site_key]) --><meta name="y_key" content="{:$_sys[yahoo_site_key]}" /><!-- end -->
+<!-- if($_sys[ms_site_validate]) --><meta name="msvalidate.01" content="{:$_sys[ms_site_validate]}" /><!-- end -->
+<meta name="keywords" content="{:$_sys[keywords]}">
+<meta name="description" content="{:$_sys[description]}">
+<!-- if($_sys[siteurl] && $_sys[site_type] == 'html') -->
+<base href="{:$_sys[siteurl]}" />
+<!-- end -->
+<script type="text/javascript">
+var base_file = "{:$_sys[siteurl]}{:HOME_PAGE}";
+var base_url = "{:$_sys[siteurl]}{:$sys_app->url}";
+var base_ctrl = "{:$sys_app->config->c}";
+var base_func = "{:$sys_app->config->f}";
+var base_dir = "{:$sys_app->config->d}";
+var phpok_data = "";
+var iframe_id = "";
+</script>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/global.js"></script>
+<script type="text/javascript" src="js/www.js"></script>
+<!-- if($sys_app->control_name && file_exists(ROOT."js/www/".$sys_app->control_name.".js")) -->
+<script type="text/javascript" src="js/www/{:$sys_app->control_name}.js"></script>
+<!-- end -->
+</head>
+
+<body>
+该程序提供英文版后台管理，但未提供相关的英文包风格，您可以联系管理员订制或是拷贝www目录至en目录
+<!-- guohans.com Baidu tongji analytics -->
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fcbd6add9115dafd6826c2874013b3201' type='text/javascript'%3E%3C/script%3E"));
+</script>
+</body>
+</html>

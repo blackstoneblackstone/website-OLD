@@ -1,0 +1,63 @@
+<!-- inc:head -->
+<script type="text/javascript" src="js/php.js"></script>
+<style type="text/css">.reply{margin:5px 15px;padding:3px 5px;border:1px solid #DDD;line-height:150%;}</style>
+<div class="main">
+	<div class="left"><!-- inc:inc/left --></div>
+	<div class="right">
+		<div id="post_book"></div>
+		<!-- $rslist AS $key=>$value -->
+		<div class="vmenu"><h3>{:$value[title]}</h3><span>&nbsp;</span></div>
+		<div class="border-notop"><div class="pd5">
+			<div class="content">{:$value[content]}</div>
+			<!-- if($value[admreply]) -->
+			<div class="reply"><span class="red">管理员于回复：</span>{:$value[admreply]}</div>
+			<!-- end -->
+		</div></div>
+		<div class="line"></div>
+		<!-- end -->
+		{if($pagelist && is_array($pagelist) && count($pagelist)>0)}
+		<div align="right">
+			<table class="pagelist">
+			<tr>
+				<!-- $pagelist AS $key=>$value -->
+				<td><a href="{:$value[url]}" class="{:$value[status] ? 'm' : 'n'}">{:$value[name]}</a></td>
+				<!-- end -->
+			</tr>
+			</table>
+		</div>
+		{end}
+	</div>
+	<div class="clear"></div>
+</div>
+<script type="text/javascript">
+function js_book(rs,id)
+{
+	getid(id).innerHTML = rs;
+}
+function to_submit()
+{
+	var subject = getid("subject").value;
+	if(!subject)
+	{
+		alert("主题不允许为空");
+		getid("subject").focus();
+		return false;
+	}
+	var email = getid("email").value;
+	if(!email)
+	{
+		alert("联系方式不能为空");
+		return false;
+	}
+	var content = getid("content").value;
+	if(!content)
+	{
+		alert("请填写留言内容");
+		return false;
+	}
+	getid("_phpok_submit").disabled = true;
+	return true;
+}
+func_php("post&ms=book",js_book,"post_book");
+</script>
+<!-- inc:foot -->

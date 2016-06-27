@@ -1,0 +1,62 @@
+<!-- inc:head -->
+<div class="main">
+<div style="width:1000px; margin:0 auto;">
+
+
+
+<SCRIPT type="text/javascript" src="images/pic.js"></SCRIPT>
+
+<DIV class="ryzs">
+ <!-- run:$hotpic = phpok("picplayera") --><UL id="certt"><!-- $hotpic[rslist] AS $key=>$value -->
+  <LI><img style="width:1000px; height:149px;" src="{:$value[picture]}"></LI>
+  
+ 	<!-- end -->
+			</ul>
+<!-- run:unset($hotpic) -->
+<SCRIPT>new dk_slideplayer("#certt",{width:"1000px",height:"149px",fontsize:"12px",time:"5000"});</SCRIPT>
+</DIV>
+
+
+
+</div>
+<div style="line-height:40px;"><span>您所在的位置：<a href="index.php">首页</a> 
+          <!-- if($leader && is_array($leader)) --> 
+          <!-- $leader AS $key=>$value --> 
+          <!-- if($value[url]) --> 
+          &raquo; <a href="{:$value[url]}">{:$value[title]}</a> 
+          <!-- end --> 
+          <!-- end --> 
+          <!-- else --> 
+          &raquo; <a href="{:site_url('index')}">网站首页</a> 
+          <!-- end --></span>
+
+</div>
+	<div class="left">
+    <!-- run:$left_catelist = phpok_catelist($cate_rs[parentid] ? $cate_rs[parentid] : $cate_rs[id]) -->
+		<div style=" background:#f48000; padding-bottom:5px;"><div style=" background:url(images/29.jpg) no-repeat; height:59px; font-family:'微软雅黑'; color:#FFF; padding-left:80px; padding-top:15px;">
+        <div style=" font-size:21px; font-weight:bold;">{:$left_catelist[me][cate_name]}</div>
+        <div style="  font-weight:bold;">{:$left_catelist[me][subcate]}</div>
+        </div>
+		
+		<ul style=" margin:0 15px;">
+			<!-- $left_catelist[rslist] AS $key=>$value -->
+			<li style=" text-align:center; border-bottom:1px solid #fff; font-size:13px; font-weight:bold; line-height:30px;"><a href="{:list_url($value)}" title="{:$value[cate_name]}" {if($value[id] == $cid)} style="color:#fff82b;"{end} class="abc">{:sys_cutstring($value[cate_name])}</a></li>
+			<!-- end -->
+		</ul>
+		</div>
+		<!-- run:unset($left_catelist) -->
+        <div style=" margin-top:15px;"><!-- run:$ta = phpok('ta') -->{:$ta[content]}<!-- run:unset($ta) --></div>
+        <div style=" margin-top:15px;"><!-- run:$tb = phpok('tb') -->{:$tb[content]}<!-- run:unset($tb) --></div>
+        <div style=" margin-top:15px;"><!-- run:$tc = phpok('tc') -->{:$tc[content]}<!-- run:unset($tc) --></div>
+    
+    
+    </div>
+	<div class="right">
+		<div style=" background:url(images/30.jpg) no-repeat; height:31px; line-height:31px; font-size:16px; font-weight:bold; color:#FFF; padding-left:15px;">{:$cate_rs[cate_name]}</div>
+        <div align="center"><div class="title">{:$rs[title]}</div></div>
+			<div class="date">发布时间：{:date("Y-m-d",$rs[post_date])} &nbsp; 点击率：{:$rs[hits]}</div>
+		<div style="line-height:25px; margin-top:10px;">{:$rs[content]}</div>
+	</div>
+	<div class="clear"></div>
+</div>
+<!-- inc:foot -->

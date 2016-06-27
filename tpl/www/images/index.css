@@ -1,0 +1,24 @@
+
+.pannel{width:1060px; margin:0px auto;}
+
+
+.experts{ width:1060px; overflow:hidden;}
+.experts_t{ background:url(../image/index_69.jpg) repeat-x; height:37px; line-height:37px;}
+.experts_t li{ float:left; margin-right:10px; padding-right :10px; background:url(../image/index_77.jpg) no-repeat right}
+.experts_t li.noborder{background: none}
+.experts_t li.why{background:url(../image/index_66.jpg) no-repeat; color: #007f41; font-size:14px; font-weight:bold; text-indent:24px; margin-left:10px;}
+.experts_t li a{ display:block;color: #007f41; font-size:14px; font-weight:bold;}
+.experts_t li a.hover{ background:url(../image/index_71.jpg) no-repeat; width:100px; color:#FFFFFF; text-align:center}
+.experts_t li a:hover{ background:url(../image/index_71.jpg) no-repeat; width:100px; color:#FFFFFF; text-align:center}
+.experts_c{ padding:10px 10px 5px 10px; width:730px;height:184px; overflow:hidden}
+
+.conexpert{overflow:hidden; }
+.conexpert li{ float:left; text-align:center; margin-right:15px;}
+.conexpert li a{ height:30px; line-height:30px; font-weight:bold}
+.conexpert .more{ background:url(../image/index_88.png) bottom right no-repeat; float:right; z-index:100px; text-indent:-1000px; display:block;width:54px; height:50px; dis; margin-top:-50px;}
+
+
+
+.gdjyhjl {cursor: pointer;float: left; background:url(12.jpg) no-repeat; width:16px; height:30px;TEXT-INDENT: -999px; margin-right:7px; margin-top:75px;}
+.gdjyhjr {cursor: pointer;float: right;background:url(13.jpg) no-repeat; width:16px; height:30px;  TEXT-INDENT: -999px; margin-right:7px;margin-top:75px;}
+#gdjyhj{ float:left; }

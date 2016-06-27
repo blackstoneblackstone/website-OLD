@@ -1,0 +1,51 @@
+<!-- inc:head -->
+<link href="images/poll.css" rel="stylesheet" type="text/css" />
+<div class="main">
+    <!-- run:$sql_list = phpok('poll','status=1') -->
+    <ul style="width:100%">
+        <!-- $sql_list AS $key=>$value -->
+        <li style="font-weight:bold">
+            <div class="snav1">
+                <div class="snav1l">
+                    <strong>
+                        <b>{:$value[title]}</b>
+                    </strong>
+                </div>
+                <div class="snav1r"></div>
+            </div>
+
+            <!-- run:$pollOpt = phpok('pollOpt','poll_id='.$value[id]) -->
+            <!-- run:$pollTotal = phpok('pollTotal','poll_id='.$value[id]) -->
+            <div class="jieguoshow">
+                <table class="jgtable" cellpadding="0" cellspacing="0">
+                    <tbody>
+                        <tr>
+                            <td class="jgtd1" width="40">序号</td>
+                            <td class="jgtd2">单位</td>
+                            <td class="jgtd1" width="80">票数</td>
+                            <td class="jgtd2" width="100">比例</td>
+                        </tr>
+                        <!-- $pollOpt AS $k=>$val -->
+                        <tr>
+                            <td class="jgth1">{:($k+1)}</td>
+                            <td class="jgth2">{:$val[title]}</td>
+                            <td class="jgth3">{:$val[votes]}</td>
+                            <td class="jgth4">{:round(($val[votes]/$pollTotal['votes'])*100,1)}%</td>
+                        </tr>
+                        <!-- end -->
+                    </tbody>
+                </table>
+            </div>
+            <ul style=" margin-left: 10px">
+                
+                <li></li>
+                
+            </ul>
+            <!-- run:unset($pollOpt) -->
+        </li>
+        <!-- end -->
+    </ul>
+    <!-- run:unset($sql_list) -->
+    <div class="clear"></div>
+</div>
+<!-- inc:foot -->

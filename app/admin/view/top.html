@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>我们会为您服务的更好,后台管理系统</title>
+<meta name="keywords" content="网站建设专家,网站定制,网站设计,网页制作,网页设计,泰纳网络科技" />
+<meta name="description" content="专业于网站建设,网站维护,网站SEO优化,空间域名销售,服务器维护等服务" />
+<meta http-equiv="expires" content="wed, 26 feb 1997 08:21:57 gmt" />
+<meta http-equiv="pragma" content="no-cach" />
+<style type="text/css">
+body{margin:0px;padding:0px;background:url(images/bg.jpg) repeat-x;font-size:12px; font-family:"微软雅黑"}
+.top{margin-top:8px; margin-right:5px;}
+.top .top_tit{text-align:right; height:39px;}
+.top_tit span{ color:#f60; font-weight:bold;}
+.top .nav_r{float:right;}
+.top .nav_l{float:right;}
+.top ul{list-style:none;padding:0;margin:0;float:right; background:url(images/top_nav_bg.jpg) repeat-x; float:right;}
+ul.menu li{float:left;padding:0;margin:0;}
+ul.menu li.menub{cursor:pointer;height:27px;overflow:hidden;}
+ul.menu li.menub .m{float:left;height:27px;line-height:27px;width:74px;text-align:center;}
+ul.menu li.menuh{height:30px;overflow:hidden;color:#fff;font-weight:bold; margin-top:-2px;}
+ul.menu li.menuh .m{height:30px;background:url(images/top_nav_on.gif) repeat-x;overflow:hidden;line-height:30px;width:74px; text-align:center;}
+.clear{clear:both;height:0;line-height:0;}
+</style>
+<script type="text/javascript">
+var base_file = "{:HOME_PAGE}";
+var base_url = "{:$sys_app->url}";
+var base_ctrl = "{:$sys_app->config->c}";
+var base_func = "{:$sys_app->config->f}";
+var base_dir = "{:$sys_app->config->d}";
+</script>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="images/global.js"></script>
+</head>
+<body>
+<div class="top">
+<div class="top_tit">你好，<span>{:$_SESSION[admin_realname]}</span>欢迎使用网站管理系统&nbsp;&nbsp;&nbsp;<select style="display:none" onchange="change_langid(this.value)">
+		<!-- $langlist AS $key=>$value -->
+		<option value="{:$value[langid]}"{if($_SESSION[sys_lang_id] == $value[langid])} selected{end}>{:$value[title]}</option>
+		<!-- end -->
+		</select></div>
+        
+        <div class="nav_r"><img src="images/top_nav_right.jpg" /></div>
+<ul class="menu">
+	<!-- $rslist AS $key=>$value -->
+	<li class="{:$key<1?'menuh':'menub'}" id="menu_{:$key}" onclick="{:$value['onclick']}"><div class="m">{:$value[title]}</div></li>
+	<!-- end -->
+	<div class="clear"></div>
+</ul>
+<div class="nav_l"><img src="images/top_nav_left.jpg" /></div>
+<div class="clear"></div>
+</div>
+<script type="text/javascript">
+var menu_count = parseInt("{:count($rslist)}");
+function change_this(key,url)
+{
+	if(menu_count<1)
+	{
+		return false;
+	}
+	var keyMenu = "menu_"+key;
+	for(var i=0;i<menu_count;i++)
+	{
+		var tmpMenu = "menu_"+i;
+		getid(tmpMenu).className = i == key ? "menuh" : "menub";
+	}
+	//执行这个URL
+	if(url && url != "undefined")
+	{
+		url = url.replace(/&amp;/g,"&");
+		window.parent.frames["frame_left"].location.href = url;
+	}
+}
+//退出
+function logout()
+{
+var q = confirm("确定要退出吗？");
+	if(q != "0")
+	{
+		var url = get_url("logout");
+		direct(url);
+	}
+	}
+function gohome()
+{
+	window.open("{:HOME_WWW}");
+	return true;
+}
+function clear_cache()
+{
+	var url = base_file + "?"+base_func+"=clear_cache";
+	var msg = get_ajax(url);
+	if(msg == "ok")
+	{
+		alert("缓存已清空！");
+		return true;
+	}
+	else
+	{
+		if(!msg) msg = "error";
+		alert(msg);
+		return false;
+	}
+}
+function change_langid(val)
+{
+	window.parent.location.href = "{:site_url('index,chang_langid','','&')}langid="+val;
+}
+//执行第一个JS
+{:$rslist[0]["onclick"] ? $rslist[0]["onclick"] : ""}
+</script>
+</body>
+</html>

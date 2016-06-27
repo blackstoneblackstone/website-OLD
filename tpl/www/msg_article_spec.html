@@ -1,0 +1,26 @@
+<!-- inc:head -->
+<div class="main">
+	<div class="left">
+		<!-- run:$left_catelist = phpok_catelist($cid) -->
+		<h3>分类列表</h3>
+		<div class="border-lr">
+		<ul>
+			<!-- $left_catelist[rslist] AS $key=>$value -->
+			<li><a href="{:list_url($value)}" title="{:$value[cate_name]}"{if($value[id] == $cid)} style="color:red"{end}>·{:$value[cate_name]}</a></li>
+				<!-- $value[sonlist] AS $k=>$v -->
+				<li>&nbsp; &nbsp; &nbsp; <a href="{:list_url($v)}" title="{:$v[cate_name]}"{if($v[id] == $cid)}  style="color:red"{end}>·{:$v[cate_name]}</a></li>
+				<!-- end -->
+			<!-- end -->
+		</ul>
+		</div>
+		<div class="bottom"></div>
+		<div class="line"></div>
+		<!-- inc:inc/left -->
+	</div>
+	<div class="right">
+		<div class="vmenu"><h3>{:$cate_rs[cate_name]}</h3><span>&nbsp;</span></div>
+		<div class="border-notop"><div class="pd5 lh">{:$rs[note]}</div></div>
+	</div>
+	<div class="clear"></div>
+</div>
+<!-- inc:foot -->

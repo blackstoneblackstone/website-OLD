@@ -1,0 +1,59 @@
+<!-- inc:head -->
+<div class="main">
+    <div class="left">
+        <!-- run:$left_catelist = phpok('catelist','cid='.$rs[id]) -->
+        <h3>分类列表</h3>
+        <div class="border-lr">
+            <ul>
+                <!-- $left_catelist[rslist] AS $key=>$value -->
+                <li><a href="{:list_url($value)}" title="{:$value[cate_name]}">·{:sys_cutstring($value[cate_name])}</a></li>
+                <!-- end -->
+            </ul>
+        </div>
+        <!-- run:unset($left_catelist) -->
+        <div class="bottom"></div>
+        <div class="line"></div>
+        <!-- inc:inc/left -->
+    </div>
+    <div class="right">
+        <div class="vmenu"><h3>产品对比</h3><span>&nbsp;</span></div>
+        <div class="border-notop">
+            <!-- run:$count =  array_keys($rslist) -->
+            <table border="1" cellpadding="0" cellspacing="0">
+                <tr>
+                    <th>产品名称</th>
+                    <!-- $rslist AS $key=>$value -->
+                    <td><a href="{:msg_url($value)}" title="{:$value[title]}">{:sys_cutstring($value[title],17)}</a></td>
+                    <!-- end -->
+                </tr>
+                <tr>
+                    <th>产品价格</th>
+                    <!-- $rslist AS $key=>$value -->
+                    <td><span class="red">{:sys_format_price($value[price])}</span> 元</td>
+                    <!-- end -->
+                </tr>
+                <tr>
+                    <th>产品价格</th>
+                    <!-- $rslist AS $key=>$value -->
+                    <td><span class="red">{:$value[fff]}</span> 元</td>
+                    <!-- end -->
+                </tr>
+            </table>
+            <div class="clear line"></div>
+        </div>
+        <!-- if($pagelist && is_array($pagelist) && count($pagelist)>0) -->
+        <div class="line"></div>
+        <div align="right">
+            <table class="pagelist">
+                <tr>
+                    <!-- $pagelist AS $key=>$value -->
+                    <td><a href="{:$value[url]}" class="{:$value[status] ? 'm' : 'n'}">{:$value[name]}</a></td>
+                    <!-- end -->
+                </tr>
+            </table>
+        </div>
+        <!-- end -->
+    </div>
+    <div class="clear"></div>
+</div>
+<!-- inc:foot -->

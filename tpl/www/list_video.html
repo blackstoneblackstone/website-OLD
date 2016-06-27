@@ -1,0 +1,82 @@
+<!-- inc:head -->
+<link rel="stylesheet" type="text/css" href="images/xixi.css">
+<script type="text/javascript" src="images/jquery.js"></script>
+<script type="text/javascript" src="images/lrtk.js"></script>
+<div class="main">
+  <div style="line-height:40px;"><span>您所在的位置：<a href="index.php">首页</a>
+    <!-- if($leader && is_array($leader)) -->
+    <!-- $leader AS $key=>$value -->
+    <!-- if($value[url]) -->
+    &raquo; <a href="{:$value[url]}">{:$value[title]}</a>
+    <!-- end -->
+    <!-- end -->
+    <!-- else -->
+    &raquo; <a href="{:site_url('index')}">网站首页</a>
+    <!-- end -->
+    </span> </div>
+  <div class="list_shipin">
+    <!-- run:$hotpic = phpok("shipin") -->
+    <!-- $hotpic[rslist] AS $key=>$value -->
+    <div class="shipin"><a href="{:msg_url($value)}"{if($value[target])} target="_blank"{end} style="{:$value[style]}"><img class="shipin_bg" src="tpl/www/images/video_bg.png">
+      <ul class="shipin_con">
+        <li><img width="233" height="167" src="{:$value[picture]}"></li>
+        <li class="shipin_title">{:$value[title]}</li>
+        <li>{:date("Y-m-d",$value[post_date])}</li>
+      </ul>
+      </a> </div>
+    <!-- end --><!-- run:unset($hotpic) -->
+    <div class="clear"></div>
+  </div>
+</div>
+<div style="width:1000px; margin:0 auto; margin-top:25px;">
+  <table cellpadding="0" cellspacing="0">
+    <tr>
+      <td style=" padding-right:36px; " valign="top"><div style="width:307px; border:1px solid #CCC; height:315px;">
+          <!-- run:$news = phpok("zx") -->
+          <div style=" background:url(images/15.jpg) no-repeat; height:28px; line-height:28px;">
+            <div style="float:left; font-size:15px; font-family:'微软雅黑'; font-weight:bold; padding-left:15px; color:#FFF">{:$news[me][cate_name]}</div>
+            <div style="float:right; margin-right:10px; margin-top:7px;"><a href="{:list_url($news[me])}"><img src="images/16.jpg"></a></div>
+            <div class="clear"></div>
+          </div>
+          <div style="text-align:center; margin-top:10px;"><img src="{:$news[me][medium_pic]}" /></div>
+          <ul style=" margin:15px 10px;">
+            <!-- $news[rslist] AS $key=>$value -->
+            <li style=" background:url(images/14.jpg) 0 center no-repeat; padding-left:10px; line-height:25px; border-bottom:1px dashed #CCC;"><span class="f_right">{:date("Y-m-d",$value[post_date])}</span><a href="{:msg_url($value)}"{if($value[target])} target="_blank"{end} style="{:$value[style]}">{:sys_cutstring($value[title],30)}</a></li>
+            <!-- end --><!-- run:unset($hotpic) -->
+          </ul>
+          <!-- run:unset($news) -->
+        </div></td>
+      <td style="  padding-right:36px;" valign="top"><div style="width:307px; border:1px solid #CCC;height:315px;">
+          <!-- run:$news = phpok("xw") -->
+          <div style=" background:url(images/18.jpg) no-repeat; height:28px; line-height:28px;">
+            <div style="float:left; font-size:15px; font-family:'微软雅黑'; font-weight:bold; padding-left:15px; color:#FFF">{:$news[me][cate_name]}</div>
+            <div style="float:right; margin-right:10px; margin-top:7px;"><a href="{:list_url($news[me])}"><img src="images/19.jpg"></a></div>
+            <div class="clear"></div>
+          </div>
+          <div style="text-align:center; margin-top:10px;"><img src="{:$news[me][medium_pic]}" /></div>
+          <ul style=" margin:15px 10px;">
+            <!-- $news[rslist] AS $key=>$value -->
+            <li style=" background:url(images/14.jpg) 0 center no-repeat; padding-left:10px; line-height:25px; border-bottom:1px dashed #CCC;"><span class="f_right">{:date("Y-m-d",$value[post_date])}</span><a href="{:msg_url($value)}"{if($value[target])} target="_blank"{end} style="{:$value[style]}">{:sys_cutstring($value[title],30)}</a></li>
+            <!-- end -->
+          </ul>
+          <!-- run:unset($news) -->
+        </div></td>
+      <td style="" valign="top"><div style="width:307px; border:1px solid #CCC;height:315px;">
+          <!-- run:$aboutus = phpok_msg("lx") -->
+          <div style=" background:url(images/21.jpg) no-repeat; height:28px; line-height:28px;">
+            <div style="float:left; font-size:15px; font-family:'微软雅黑'; font-weight:bold; padding-left:15px; color:#FFF"">{:$aboutus[title]}</div>
+            <div style="float:right; margin-right:10px; margin-top:7px;"><a href="{:msg_url($aboutus)}"><img src="images/22.jpg"></a></div>
+            <div class="clear"></div>
+            <!-- if($aboutus[picture]) -->
+            <div style="text-align:center; margin-top:10px;"><img src="{:$aboutus[picture]}" width="291" height="89" /></div>
+            <!-- end -->
+            <div style=" margin:15px 10px;">
+              <div style="line-height:20px;">{:nl2br($aboutus[note])}</div>
+            </div>
+          </div>
+          <!-- run:unset($aboutus) -->
+        </div></td>
+    </tr>
+  </table>
+</div>
+<!-- inc:foot -->

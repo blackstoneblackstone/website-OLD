@@ -1,0 +1,137 @@
+<!-- inc:head -->
+<div class="main">
+    <div class="left">
+        <!-- run:$left_catelist = phpok('catelist','cid='.$rs[id]) -->
+        <h3>分类列表</h3>
+        <div class="border-lr">
+            <ul>
+                <!-- $left_catelist[rslist] AS $key=>$value -->
+                <li><a href="{:list_url($value)}" title="{:$value[cate_name]}">·{:sys_cutstring($value[cate_name])}</a></li>
+                <!-- end -->
+            </ul>
+        </div>
+        <!-- run:unset($left_catelist) -->
+        <div class="bottom"></div>
+        <div class="line"></div>
+        <!-- inc:inc/left -->
+    </div>
+    <div class="right">
+        <div class="vmenu"><h3>{:$rs[cate_name]}</h3><span>&nbsp;</span></div>
+        <div class="filter">
+            <script language="JavaScript">
+                $(function() {
+                    $('#form1').ajaxForm({
+                        success: function(data) {
+                            $('.border-notop').html(data);
+                        },
+                        dataType: ''
+                    });
+                    $('.reset').each(function() {
+                        $(this).css('cursor', 'pointer');
+                        $(this).click(function() {
+                            $(this).parent('div').children('input').attr("checked", "");
+                            $(this).siblings().removeClass('active');
+							$(this).addClass('active');
+                            $('#form1').submit();
+                        });
+                    });
+                    $('[for]').each(function() {
+                        $(this).click(function() {
+                            if($("#"+$(this).attr('for'))[0].checked){
+                                $("#"+$(this).attr('for')).attr('checked','');
+                                $(this).removeClass('active');
+                                $('#form1').submit();
+                                return false;
+                            }else{
+                                if($("#"+$(this).attr('for')).attr('type')==='radio'){
+                                    $(this).siblings().removeClass('active');
+                                }else{
+									$(this).siblings('.reset').removeClass('active');
+								}
+                                $(this).addClass('active');
+                            }
+                        });
+                    });
+                    //自动提交
+                    $('#form1 input').change(function(){$('#form1').submit();});
+                });
+            </script>
+            <style>
+              #form1>div{height:40px;}
+              #form1 input{position: absolute; left: -2000px;}
+              #form1 label,#form1 span{padding:10px; line-height:30px;}
+              #form1 .active{background-color: #ff0000; color: #fff; }
+            </style>
+            <form method="post" action="" id='form1'>
+                <div>
+                    风格：<span class="reset">不限</span>
+                    <!-- run:$inputList = getModuleField('fengge') -->
+                    <!-- $inputList AS $input -->
+                    {:$input}
+                    <!-- end -->
+                </div>
+                <div>
+                    颜色：<span class="reset">不限</span>
+                    <!-- run:$inputList = getModuleField('yanse') -->
+                    <!-- $inputList AS $input -->
+                    {:$input}
+                    <!-- end -->
+                </div>
+                <div>
+                    现场布置：<span class="reset">不限</span>
+                    <!-- run:$inputList = getModuleField('buzhi') -->
+                    <!-- $inputList AS $input -->
+                    {:$input}
+                    <!-- end -->
+                </div>
+                <div>
+                    婚纱礼服：<span class="reset">不限</span>
+                    <!-- run:$inputList = getModuleField('fuzhuang') -->
+                    <!-- $inputList AS $input -->
+                    {:$input}
+                    <!-- end -->
+                </div>
+                <div>
+                    捧花花束：<span class="reset">不限</span>
+                    <!-- run:$inputList = getModuleField('penghua') -->
+                    <!-- $inputList AS $input -->
+                    {:$input}
+                    <!-- end -->
+                </div>
+                <div><input type="hidden" name="ajax" value="1" /><input type="submit" title="提交" value="提交" class="submit"></div>
+            </form>
+        </div>
+        <div class="border-notop">
+            <ul class="picture">
+                <!-- $rslist AS $key=>$value -->
+                <li>
+                    <div><a href="{:msg_url($value)}" title="{:$value[title]}"><img src="{:$value[picture]}" border="0" alt="{:$value[title]}" /></a></div>
+                    <div><a href="{:msg_url($value)}" title="{:$value[title]}">{:sys_cutstring($value[title],17)}</a></div>
+                    <div>价格：<span class="red">{:sys_format_price($value[price])}</span> 元</div>
+                    <div  onclick="Adds('{:msg_url($value)}', '{:$value[id]}', '{:sys_cutstring($value[title],17)}')">加入对比</div>
+                </li>
+                <!-- end -->
+            </ul>
+
+
+            <div class="line"></div>
+            <!-- if($pagelist && is_array($pagelist) && count($pagelist)>0) -->         
+            <div align="right">
+                <table class="pagelist">
+                    <tr>
+                        <td width="220" align="left">共{:$pagelist[0]['total']}条 {:$pagelist[0]['currentPage']}/{:$pagelist[0]['totalPage']}</td>
+                        <!-- $pagelist AS $key=>$value -->
+                        <td><a href="{:$value[url]}" class="{:$value[status] ? 'm' : 'n'}">{:$value[name]}</a></td>
+                        <!-- end -->
+                        <td width="230">{:$pagelist[0]['selectPage']}{:$pagelist[0]['inputPage']}</td>
+                    </tr>
+                </table>           
+            </div>
+            <!-- end -->
+            <div class="clear line"></div>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+<!-- inc:inc/compare -->
+<!-- inc:foot -->

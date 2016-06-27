@@ -1,0 +1,18 @@
+<div class="post_digg">
+	<div onclick="func_php('digg&type=good&id={:$id}&_act=hits',js_show_digg,'reply_hits');" onmouseout="this.style.backgroundPosition='left top';" onmousemove="this.style.backgroundPosition='left bottom';" style="background-position: left top; width:100px; float:left;">
+		<div class="digg_act">有帮助</div>
+		<div class="digg_num">({:$rs[good]})</div>
+		<div class="digg_percent">
+			<div class="digg_percent_bar"><span style="width:{:$rs[good_percent]};"></span></div>
+			<div class="digg_percent_num">{:$rs[good_percent]}</div>
+		</div>
+	</div>
+	<div onclick="func_php('digg&type=bad&id={:$id}&_act=hits',js_show_digg,'reply_hits');" onmouseout="this.style.backgroundPosition='right top';" onmousemove="this.style.backgroundPosition='right bottom';" style="width:100px; float:left;">
+		<div class="digg_act">没帮助</div>
+		<div class="digg_num">({:$rs[bad]})</div>
+		<div class="digg_percent">
+			<div class="digg_percent_bar"><span style="width:{:$rs[bad_percent]};"></span></div>
+			<div class="digg_percent_num">{:$rs[bad_percent]}</div>
+		</div>
+	</div>
+</div>

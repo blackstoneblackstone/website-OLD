@@ -1,0 +1,159 @@
+<script type="text/javascript">
+var cateid = "{:$cateid}";
+var link_id = "{:$link_id ? $link_id : 0}";
+function phpok_catelist(mid)
+{
+	if(!mid || mid == 0)
+	{
+		getid("search_catelist").style.display = "none";
+		getid("search_catelist_select").innerHTML = "";
+		return false;
+	}
+	var url = get_url("search,catelist")+'mid='+mid;
+	url += "&cateid="+cateid+"&catestring=cateid&extstring=search";
+	get_ajax(url,js_search_catelist);
+	//通过ajax获取是否有联动信息
+	var url = get_url("search,datalink")+'mid='+mid;
+	get_ajax(url,js_search_datalink);
+}
+var datalink_msg = "";
+function js_search_datalink(msg)
+{
+	if(msg)
+	{
+		if(msg == "false")
+		{
+			getid("search_datalink").style.display = "none";
+			getid("search_datalink_select").innerHTML = "";
+		}
+		else
+		{
+			datalink_msg = msg;
+			search_datalink(link_id);
+		}
+	}
+	return true;
+}
+
+function search_datalink(val)
+{
+	var array = $.evalJSON(datalink_msg);
+	var array_p = array["parent"];
+	var array_s = array["son"];
+	//取得父级
+	var select_p = val;
+	for(var i=0;i<array_s.length;i++)
+	{
+		if(array_s[i]["val"] == val)
+		{
+			var pid = array_s[i]["pid"];
+			for(var k=0;k<array_p.length;k++)
+			{
+				if(array_p[k]["id"] == pid)
+				{
+					select_p = array_p[k]["val"];
+					break;
+				}
+			}
+			break;
+		}
+	}
+	var ihtml = "<input type='hidden' id='"+array['input']+"' name='"+array['input']+"' value='"+val+"' />";
+	ihtml += '<select onchange="search_datalink(this.value)"><option value="0">请选择</option>';
+	var select_pid = 0;
+	for(var i=0;i<array_p.length;i++)
+	{
+		ihtml += '<option value="'+array_p[i]["val"]+'"';
+		if(array_p[i]["val"] == select_p)
+		{
+			select_pid = array_p[i]["id"];
+			ihtml += " selected";
+		}
+		ihtml += '>'+array_p[i]["title"]+'</option>';
+	}
+	ihtml += '</select>';
+	var shtml = '<select onchange="search_datalink_son(this.value)"><option value="0">请选择</option>';
+	var soption = '';
+	for(var i=0;i<array_s.length;i++)
+	{
+		if(array_s[i]["pid"] == select_pid)
+		{
+			soption += '<option value="'+array_s[i]["val"]+'"';
+			if(array_s[i]["val"] == val)
+			{
+				soption += " selected";
+			}
+			soption += '>'+array_s[i]["title"]+'</option>';
+		}
+	}
+	if(soption != '')
+	{
+		ihtml += "<div style='padding-top:3px;'>"+shtml + soption + "</select></div>";
+	}
+	getid("search_datalink").style.display = "";
+	getid("search_datalink_select").innerHTML = ihtml;
+	return true;
+}
+
+function search_datalink_son(val)
+{
+	var array = $.evalJSON(datalink_msg);
+	getid(array['input']).value = val;
+}
+
+function js_search_catelist(msg)
+{
+	if(msg)
+	{
+		if(msg == "false")
+		{
+			getid("search_catelist").style.display = "none";
+			getid("search_catelist_select").innerHTML = "";
+		}
+		else
+		{
+			getid("search_catelist_select").innerHTML = msg;
+			getid("search_catelist").style.display = "";
+		}
+	}
+	return true;
+}
+
+</script>
+<h3>站内搜索</h3>
+<div class="border-lr">
+	<form method="post" action="{:site_url('search')}">
+	<table width="230px" cellspacing="1" cellpadding="1">
+	<!-- run:$modulelist = phpok_module() -->
+	<!-- if($modulelist) -->
+	<tr>
+		<td align="right">类型：</td>
+		<td><select name="mid" id="search_mid" onchange="phpok_catelist(this.value)"><option value="0">全部</option>
+		<!-- $modulelist AS $key=>$value -->
+		<option value="{:$value[id]}"{if($mid == $value['id'])} selected{end}>{:$value[title]}</option>
+		<!-- end -->
+		</select></td>
+	</tr>
+	<!-- end -->
+	<tr id="search_catelist" style="display:none;">
+		<td align="right">分类：</td>
+		<td id="search_catelist_select">&nbsp;</td>
+	</tr>
+	<tr id="search_datalink" style="display:none;">
+		<td align="right" valign="top">省市：</td>
+		<td id="search_datalink_select">&nbsp;</td>
+	</tr>
+	<tr>
+		<td align="right">关键字：</td>
+		<td><input type="text" id="keywords" name="keywords" value="{:$keywords}" /></td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><br /><input type="submit" value="查 询" class="but01" /></td>
+	</tr>
+	</form>
+	</table>
+</div>
+<div class="bottom"></div>
+<div class="line"></div>
+<!-- if($mid) --><script type="text/javascript">phpok_catelist('{:$mid}');</script><!-- end -->

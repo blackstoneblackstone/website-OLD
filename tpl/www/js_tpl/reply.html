@@ -1,0 +1,54 @@
+<!-- if($rslist) -->
+<div class="block-title">推荐评论</div>
+<div class="block-msg">
+	<table width="100%">
+	<!-- $rslist AS $key=>$value -->
+	<tr>
+		<td>
+			<div class="content"><span class="red">{:date("Y-m-d H:i:s",$value[postdate])}</span>：{:$value[content]}</div>
+			<!-- if($value[admreply]) -->
+			<div style="margin:5px 15px;padding:3px 5px;border:1px solid #DDD;"><span class="blue">管理员于 {:date("Y-m-d H:i:s",$value[replydate])} 回复：</span>{:$value[admreply]}</div>
+			<!-- end -->
+		</td>
+	</tr>
+	<!-- end -->
+	</table>
+</div>
+<!-- end -->
+
+<div class="block-title">评论：{:$rs[title]} <span class="f_right pr_3"><a href="{:site_url('reply','id='.$id)}">已有 <span class="red">{:$reply_count}</span> 条评论&nbsp;</a></span></div>
+<div class="block-msg">
+<form method="post" name="reply_form" id="reply_form" action="{:site_url('reply,save','id='.$id)}" onsubmit="return to_replay('reply_form',{:$_SESSION[user_id] ? 1 : 0});">
+<table width="100%" cellpadding="1" cellspacing="1">
+<!-- if($_SESSION[user_id]) -->
+<tr>
+	<td align="right">账号：</td>
+	<td>&nbsp;{:$_SESSION[user_name]}&nbsp;</td>
+</tr>
+<!-- else -->
+<tr>
+	<td align="right">账号：</td>
+	<td>
+		<input type="text" id="username" name="username" class="input_login" />
+		&nbsp; &nbsp; &nbsp;密码：
+		<input type="password" id="password" name="password" class="input_login" />
+	</td>
+</tr>
+<!-- end -->
+<tr>
+	<td align="right">主题：</td>
+	<td><input type="text" id="reply_subject" name="reply_subject" style="width:365px;" value="Re:{:$rs[title]}" /></td>
+</tr>
+<tr>
+	<td align="right">内容：</td>
+	<td>
+	<textarea id="reply_content" name="reply_content" style="width:365px;height:70px;"></textarea>
+	</td>
+</tr>
+<tr>
+	<td align="right">&nbsp;</td>
+	<td><input type="submit" value="提交" /></td>
+</tr>
+</form>
+</table>
+</div>

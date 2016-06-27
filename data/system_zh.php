@@ -1,0 +1,42 @@
+<?php 
+$_sys["sitename"] = "国翰教育潜能开发中心";
+$_sys["seotitle"] = "打造学习高手|超级记忆力|快速阅读|集中注意力|记忆力训练培训|最强大脑训练营";
+$_sys["siteurl"] = "http://www.guohans.com/";
+$_sys["indexphp"] = "index.php";
+$_sys["redirect"] = "";
+$_sys["keywords"] = "国翰教育,国翰全脑,右脑开发,全脑开发,记忆力训练,快速提高记忆力,学习方法,快速阅读,记忆力培训,注意力不集中,全脑开发加盟,右脑开发加盟";
+$_sys["description"] = "国翰潜能开发中心专业开设全脑教育,右脑开发,快速提高记忆力,快速阅读,记忆力训练培训,打造最强大脑训练营";
+$_sys["logo"] = "upfiles/201408/13/3bfb04c527707059.jpg";
+$_sys["smtp_server"] = "smtp.126.com";
+$_sys["smtp_port"] = "25";
+$_sys["smtp_charset"] = "gbk";
+$_sys["smtp_ssl"] = "";
+$_sys["smtp_user"] = "taina";
+$_sys["smtp_pass"] = "";
+$_sys["smtp_reply"] = "taina@126.com";
+$_sys["smtp_admin"] = "taina@126.com";
+$_sys["smtp_to"] = "taina@126.com";
+$_sys["smtp_fromname"] = "企业网站";
+$_sys["smtp_reg"] = "1";
+$_sys["smtp_order"] = "";
+$_sys["video_width"] = "430";
+$_sys["video_height"] = "330";
+$_sys["video_image"] = "upfiles/201012/15/32359c502faff0a4.jpg";
+$_sys["site_status"] = "1";
+$_sys["close_reason"] = "网站暂停关闭";
+$_sys["reg_status"] = "1";
+$_sys["close_reg"] = "";
+$_sys["login_status"] = "1";
+$_sys["close_log"] = "";
+$_sys["search_thumb"] = "";
+$_sys["cart_thumb"] = "";
+$_sys["cart_address"] = "";
+$_sys["search_page"] = "30";
+$_sys["site_type"] = "";
+$_sys["sitehtml"] = "http://localhost/phpok3full/html/zh/";
+$_sys["html_folder"] = "html/zh/";
+$_sys["google_site_verification"] = "";
+$_sys["yahoo_site_key"] = "";
+$_sys["ms_site_validate"] = "";
+
+ ?>

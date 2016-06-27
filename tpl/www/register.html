@@ -1,0 +1,167 @@
+<!-- inc:head -->
+
+<div class="main"> 
+  
+  <!-- run:$reg_condition = phpok('register_condition') --> 
+  <!-- if($reg_condition) -->
+  <div class="vmenu">
+    <h3>{:$reg_condition[title]}</h3>
+    <span>&nbsp;</span></div>
+  <div class="border-notop">
+    <div class="pd5 lh">{:$reg_condition[content]}</div>
+  </div>
+  <div class="line"></div>
+  <!-- run:unset($reg_condition) --> 
+  <!-- end -->
+  <div class="vmenu">
+    <h3>会员注册</h3>
+    <span>&nbsp;</span></div>
+  <div class="border-notop">
+    <form method="post" action="{:site_url('register,setok')}" onsubmit="return check_reg();">
+      <div class='table'>
+        <div class='left'>Email：</div>
+        <div class='right'>
+            <table cellpadding='0' cellspacing='0'>
+              <tr>
+                <td><input type='text' name="email" id="email" style='width:200px;'> &nbsp;<span class="red">*</span> 邮箱不允许为空</td>
+              </tr>
+            </table>
+        </div>
+        <div class='clear'></div>
+      </div>
+      <div class='table'>
+        <div class='left'>账号：</div>
+        <div class='right'>
+            <table cellpadding='0' cellspacing='0'>
+              <tr>
+                <td><input type='text' name="name" id="name" style='width:200px;'> &nbsp;<span class="red">*</span> 账号不允许</td>
+              </tr>
+            </table>
+        </div>
+        <div class='clear'></div>
+      </div>
+      <div class='table'>
+        <div class='left'>密码：</div>
+        <div class='right'>
+            <table cellpadding='0' cellspacing='0'>
+              <tr>
+                <td><input type="password" name="newpass" id="newpass" style='width:200px;' id="newpass"> &nbsp;<span class="red">*</span> 请填写您的密码</td>
+              </tr>
+            </table>
+        </div>
+        <div class='clear'></div>
+      </div>
+      
+       <div class='table'>
+        <div class='left'>确认密码：</div>
+        <div class='right'>
+            <table cellpadding='0' cellspacing='0'>
+              <tr>
+                <td><input type="password" name="chkpass" id="chkpass" style='width:200px;' id="chkpass"> &nbsp;<span class="red">*</span> 请确认您的密码</td>
+              </tr>
+            </table>
+        </div>
+        <div class='clear'></div>
+      </div>
+     
+      <!-- $extlist_must AS $key=>$value --> 
+      {:$value} 
+      <!-- end -->
+      
+      
+       <div class='table'>
+        <div class='left'></div>
+        <div class='right'>
+            <table cellpadding='0' cellspacing='0'>
+              <tr>
+                <td><input type="checkbox" id="ifok"> 同意我站注册条款</td>
+              </tr>
+            </table>
+        </div>
+        <div class='clear'></div>
+      </div>
+      
+       <div class='table'>
+        <div class='left'>验证码：</div>
+        <div class='right'>
+            <table cellpadding='0' cellspacing='0'>   <!-- if(function_exists("imagecreate") && defined("SYS_VCODE_USE") && SYS_VCODE_USE == true) -->
+              <tr>
+                <td><input name="sys_check" id="sys_check" type="text" style="width:50px;" > <span id="phpok_update_code"><img src="{:site_url('login,codes')}" border="0" align="absmiddle" style="cursor:pointer;" onclick="phpok_update_code()"></span></td>
+              </tr><!-- end -->
+            </table>
+        </div>
+        <div class='clear'></div>
+      </div>
+      
+       <div class='table'>
+        <div class='left'></div>
+        <div class='right'>
+            <table cellpadding='0' cellspacing='0'>   <!-- if(function_exists("imagecreate") && defined("SYS_VCODE_USE") && SYS_VCODE_USE == true) -->
+              <tr>
+                <td><input type="submit" id="phpok_submit" value="注册成为会员" /></td>
+              </tr><!-- end -->
+            </table>
+        </div>
+        <div class='clear'></div>
+      </div>
+      
+    
+    </form>
+  </div>
+  <div class="clear line"></div>
+</div>
+<script type="text/javascript">
+function check_reg()
+{
+	var chk = getid("ifok").checked;
+	if(!chk)
+	{
+		alert("注册成为会员前，请先同意本站注册协议");
+		return false;
+	}
+	var email = getid("email").value;
+	if(!email)
+	{
+		alert("邮箱不允许为空！");
+		return false;
+	}
+	var str_reg=/^\w+((-\w+)|(\.\w+))*\@{1}\w+\.{1}\w{2,4}(\.{0,1}\w{2}){0,1}/ig;
+	if(email.search(str_reg) == -1)
+	{
+		alert("邮箱格式不正确！");
+		return false;
+	}
+	//
+	var name = getid("name").value;
+	if(!name)
+	{
+		alert("账号不允许为空！");
+		return false;
+	}
+	//通过Ajax检测账号是否有相同
+	var ajaxurl = base_url + base_func + "=chkname&name="+EncodeUtf8(name);
+	var msg = ajax_get(ajaxurl);
+	if(!msg) msg = "error";
+	if(msg != "ok")
+	{
+		alert(msg);
+		return false;
+	}
+	//检测密码是否为空
+	var newpass = getid("newpass").value;
+	var chkpass = getid("chkpass").value;
+	if(!newpass || !chkpass)
+	{
+		alert("密码不允许为空！");
+		return false;
+	}
+	if(newpass != chkpass)
+	{
+		alert("两次输入密码不一致！");
+		return false;
+	}
+	getid("phpok_submit").disabled = true;
+	return true;
+}
+</script> 
+<!-- inc:foot -->

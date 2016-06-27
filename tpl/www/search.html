@@ -1,0 +1,29 @@
+<!-- inc:head -->
+<div class="main">
+	<div class="left"><!-- inc:inc/left --></div>
+	<div class="right">
+		<div class="vmenu"><h3>搜索结果：{:$keywords}</h3><span>&nbsp;</span></div>
+		<div class="border-notop"><div class="pd5">
+			<ul class="newslist">
+			<!-- $rslist AS $key=>$value -->
+			<li><span class="f_right">{:date("Y-m-d",$value[post_date])}&nbsp;</span><a href="{:msg_url($value)}"{if($value[target])} target="_blank"{end} style="{:$value[style]}">{:$value[title]}</a>点击率：{:$value[hits]}</li>
+			<!-- end -->
+			</ul>
+			{if($pagelist && is_array($pagelist) && count($pagelist)>0)}
+			<div class="line"></div>
+			<div align="right">
+				<table class="pagelist">
+				<tr>
+					<!-- $pagelist AS $key=>$value -->
+					<td><a href="{:$value[url]}" class="{:$value[status] ? 'm' : 'n'}">{:$value[name]}</td>
+					<!-- end -->
+				</tr>
+				</table>
+			</div>
+			<div class="line"></div>
+			{end}
+		</div></div>
+	</div>
+	<div class="clear line"></div>
+</div>
+<!-- inc:foot -->

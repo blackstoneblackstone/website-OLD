@@ -1,0 +1,101 @@
+<div id="user_cp"></div>
+<script type="text/javascript">func_php("usercp",js_usercp,"user_cp");</script>
+
+<!--通过分类标示串来调用-->
+<!-- run:$news = phpok_c_list("chanpinfenlei","2") -->
+<h3>{:$news[me][cate_name]}</h3>
+<div class="border-lrb">
+<ul>
+	<!-- $news[rslist] AS $key=>$value -->
+	<li><a href="{:msg_url($value)}" title="{:$value[title]}"><img src="{:$value[picture]}" border="0" alt="{:$value[title]}" /></a></li>
+    <li><a href="{:msg_url($value)}" title="{:$value[title]}">{:($key+1)}{:sys_cutstring($value[title],30,'…')}</a></li>
+	<!-- end -->
+</ul>
+</div>
+<!-- run:unset($news) -->
+<div class="line"></div>
+
+<h3>站内搜索</h3>
+<div class="border-lr">{:sys_search($mid,$cid,$keywords,$ext_keywords)}</div>
+<div class="bottom"></div>
+<div class="line"></div>
+<!--通过判断来做-->
+<h3>模块分类</h3>
+<div class="border-lrb">
+ <!-- run:$catelist = phpok_s_catelist('mkfl') --> 
+  <!-- $catelist AS $key=>$value --><!-- if($value[module_id]==10) -->
+  <div class="sitemap">
+    <div class="one"><a>{:$value[cate_name]}</a></div>
+    <!-- run:$sonlist = phpok_s_catelist($value[id]) -->
+    <ul class="two">
+      <!-- $sonlist AS $k=>$v -->
+      <li > <a href="{:list_url($v)}">{:$v[cate_name]}</a> </li>
+      
+      <!-- end -->
+    </ul>
+    <!-- run:unset($sonlist) --></div>
+  <!-- end --> 
+  <!-- end --> 
+  <!-- run:unset($catelist) --> 
+</div>
+<script type="text/javascript">
+function subscribers_email()
+{
+	var email = $("#subscribers_email").attr("value");
+	if(!email)
+	{
+		alert("邮箱不允许为空！");
+		return false;
+	}
+	var str_reg=/^\w+((-\w+)|(\.\w+))*\@{1}\w+\.{1}\w{2,4}(\.{0,1}\w{2}){0,1}/ig;
+	if(email.search(str_reg) == -1)
+	{
+		alert("邮箱格式不正确！");
+		return false;
+	}
+	return true;
+}
+</script>
+
+<div class="line"></div>
+<h3>邮件订阅</h3>
+<div class="border-lr">
+<form method="post" action="{:site_url('subscribers,setok')}" onsubmit="return chk_email()">
+<input type="hidden" name="goback" value="{:site_url('index')}" />
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+	<td width="21%" height="35">邮箱：</td>
+	<td width="79%"><input type="text" name="email" id="subscribers_email" /></td>
+</tr>
+<tr>
+<td height="35" colspan="2"><input type="submit" value="提 交" class="but01" /></td>
+</tr>
+</table>
+</form>
+</div><div class="bottom"></div>
+<div class="line"></div>
+<!-- run:$sql_list = phpok('poll','status=1') -->
+<h3>网站投票</h3>
+<div class="border-lrb">
+    <form method="post" action="{:site_url('poll,ok')}">
+        <ul style=" margin-left: 10px">
+	<!-- $sql_list AS $key=>$value -->
+	<li style="font-weight:bold">
+            {:$value[title]}
+            <!-- run:$pollOpt = phpok('pollOpt','poll_id='.$value[id]) -->
+            <ul style=" margin-left: 10px">
+                <!-- $pollOpt AS $k=>$val -->
+                <li><input type='radio' name='poll_{:$value[id]}' value='{:$val[id]}' />{:$val[title]}</li>
+                <!-- end -->
+            </ul>
+            <!-- run:unset($pollOpt) -->
+        </li>
+	<!-- end -->
+</ul>
+        <div style="margin-top:5px; text-align:center"><input type="submit" name='submit' value='提交' class="but01" /></div>
+         <div style="margin-top:5px; text-align:center"><a href="{:site_url('poll,result')}">查看投票结果</a></div>
+        </form>
+</div>
+<!-- run:unset($sql_list) -->
+
+

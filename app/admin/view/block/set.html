@@ -1,0 +1,125 @@
+<!-- inc:header -->
+<div class="notice"><div class="p">
+        <table width="100%" cellpadding="0" cellspacing="0">
+            <tr>
+                <td><span class="lead">&nbsp;&raquo; <a href="{:site_url('phpok')}">自定义管理</a> &raquo; 添加/编辑信息</span></td>
+            </tr>
+        </table>
+    </div></div>
+
+<form method="post" action="{:site_url('block,setok')}id={:$id}" onsubmit="return to_submit();">
+
+    <div class="table">
+        <div class="left"><span class="red">*</span> 主题：</div>
+        <input type="text" name="title" id="title" value="{:$rs[title]}">
+    </div>
+
+    <!-- if($id) -->
+    <div class="table">
+        <div class="left">标识串：</div>
+        <input type="text" disabled value="{:$rs[identifier]}">
+        <span class="clue_on"> 标识串不允许修改</span>
+    </div>
+    <!-- else -->
+    <div class="table">
+        <div class="left"><span class="red">*</span> 标识串：</div>
+        <input type="text" id="identifier" name="identifier" value="{:$rs[identifier]}">
+        <span class="clue_on"> 标识串仅限字母、数字及下划线，且必须是字母开头</span>
+    </div>
+    <!-- end -->
+
+    <div class="table">
+        <div class="left">备注：</div>
+        <input type="text" name="note" id="note" value="{:$rs[note]}" class="long_input">
+    </div>
+
+    <div class="table">
+        <div class="left">
+            <div style="padding-bottom: 3px;">代码：</div>
+            <div align="right">
+                <input type="hidden" id="typetext_tmp_id" name="typetext_tmp_id">
+                <table>
+                    <tr><td><input value="图片" class="btn2" onclick="phpjs_fck_img('typetext')" type="button"></td></tr>
+                    <tr><td><input value="附件" class="btn2" onclick="phpjs_fck_download('typetext')" type="button"></td></tr>
+                    <tr><td><input value="影音" class="btn2" onclick="phpjs_fck_video('typetext')" type="button"></td></tr>
+                </table>
+            </div>
+        </div>
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td>{:sys_fckeditor('typetext',$rs[typetext],'240px','640px')}</td>
+            </tr>
+        </table>
+    </div>
+<input type="hidden" name="intype"  value="block" />
+    <div class="table">
+        <div class="left">&nbsp;</div>
+        <input type="submit" class="btn3" id="_phpok_submit" name="article_submit" value=" 提交 ">
+    </div>
+
+</form>
+
+<script type="text/javascript">
+    function to_intype(val)
+    {
+        if (val == "sign")
+        {
+            $("#inc_sql_html").hide();
+            $("#inc_code_html").hide();
+            $("#inc_usr_html").show();
+        }
+        else if (val == "sql")
+        {
+            $("#inc_sql_html").show();
+            $("#inc_code_html").hide();
+            $("#inc_usr_html").hide();
+        }
+        else if (val == "html")
+        {
+            $("#inc_sql_html").hide();
+            $("#inc_code_html").show();
+            $("#inc_usr_html").hide();
+        }
+    }
+    function to_submit()
+    {
+        var name = getid("title").value;
+        if (!name)
+        {
+            alert("名称不允许为空");
+            getid("title").focus();
+            return false;
+        }
+<!-- if(!$id) -->
+        var identifier = getid("identifier").value;
+        if (!identifier)
+        {
+            alert("标识符不允许为空");
+            getid("identifier").focus();
+            return false;
+        }
+        var chk_url = "{:site_url('phpok,chk_identifier')}identifier=" + EncodeUtf8(identifier);
+        var msg = get_ajax(chk_url);
+        if (msg != "ok")
+        {
+            if (!msg)
+                msg = "Error: 检测失败，请检查";
+            alert(msg);
+            return false;
+        }
+<!-- end -->
+        getid("_phpok_submit").disabled = true;
+        return true;
+    }
+    {
+        if ($id)
+    }
+    to_intype("{:$rs[intype]}");
+    {
+        else}
+    to_intype("sign");
+    {
+        end
+    }
+</script>
+<!-- inc:footer -->

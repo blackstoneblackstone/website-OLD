@@ -1,0 +1,98 @@
+<!-- inc:head -->
+<div class="main">
+	<div class="left">
+		<!-- run:$left_catelist = phpok_catelist($cid) -->
+		<!-- if($left_catelist[rslist]) -->
+		<h3>分类列表</h3>
+		<div class="border-lr">
+		<ul>
+			<!-- $left_catelist[rslist] AS $key=>$value -->
+			<li><a href="{:list_url($value)}" title="{:$value[cate_name]}"{if($value[id] == $cid)} style="color:red"{end}>·{:$value[cate_name]}</a></li>
+				<!-- $value[sonlist] AS $k=>$v -->
+				<li>&nbsp; &nbsp; &nbsp; <a href="{:list_url($v)}" title="{:$v[cate_name]}"{if($v[id] == $cid)}  style="color:red"{end}>·{:$v[cate_name]}</a></li>
+				<!-- end -->
+			<!-- end -->
+		</ul>
+		</div>
+		<div class="bottom"></div>
+		<div class="line"></div>
+		<!-- end -->
+		<!-- inc:inc/left -->
+	</div>
+	<div class="right">
+		<div class="vmenu"><h3>{:$cate_rs[cate_name]}</h3><span>&nbsp;</span></div>
+		<div class="border-notop"><div class="pd5 lh">
+			<div class="proimg" id="proimg">
+				<div style="width:428px;overflow:hidden;text-align:center;"><img src="images/loading.gif" id="big-picture" /></div>
+				<table width="100%">
+				<tr>
+					<!-- $rs[pics] AS $key=>$value -->
+					<td align="center"><img src="{:$value[gd][thumb]}" width="50px" height="40px" id="thumb_{:$key}" class="img_no_select hand" onclick="load_img({:$key});"></td>
+					<!-- row:6 -->
+					<!-- end -->
+				</tr>
+				</table>
+			</div>
+			<div class="protxt">
+				<h3 class="protitle">{:$rs[title]}</h3>
+				<div class="note">{:$rs[note]}</div>
+				<div><b>附件名称：</b>{:$rs[download][title]}</div>
+				<div><b>发布时间：</b>{:date("Y-m-d",$rs[post_date])}</div>
+				<div><b>查看次数：</b>{:$rs[hits]}</div>
+				<div><input type="button" value="点此下载" class="buy" onclick="direct('{:site_url('download')}id={:$rs[download][id]}')" /></div>
+				<div style="padding-top:5px;">
+<script type="text/javascript"><!--
+google_ad_client = "pub-1124871151256320";
+/* 250x250, 创建于 07-12-8 */
+google_ad_slot = "7095816798";
+google_ad_width = 250;
+google_ad_height = 250;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+				</div>
+			</div>
+			<div style="clear:both;"><div class="line"></div></div>
+		</div></div>
+		<div class="line"></div>
+		<div class="vmenu"><h3>内容描述</h3><span>&nbsp;</span></div>
+		<div class="border-notop"><div class="pd5 lh">{:$rs[content]}</div></div>
+	</div>
+	<div class="clear"></div>
+</div>
+<script type="text/javascript">
+var img_count = {:count($rs[pics])};//产品图片
+var myhtml = "";
+var picarray = new Array();
+{$rs[pics] AS $key=>$value}
+picarray[{:$key}] = "{:$value[gd][big]}";
+{end}
+function load_img(k)
+{
+	if(k>=img_count) k=0;
+	for(var i=0; i< img_count;i++)
+	{
+		if(i == k)
+		{
+			getid("thumb_"+k).className="img_selected hand";
+			img_load(picarray[k],"big-picture");
+		}
+		else
+		{
+			getid("thumb_"+i).className="img_no_select hand";
+		}
+	}
+}
+if(img_count>0)
+{
+	load_img(0);
+}
+else
+{
+	getid("proimg").style.display = "none";
+}
+</script>
+
+<!-- inc:foot -->

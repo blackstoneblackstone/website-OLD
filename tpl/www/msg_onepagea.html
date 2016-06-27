@@ -1,0 +1,41 @@
+<!-- inc:head -->
+<div class="main">
+<div style="width:1000px; margin:0 auto;">
+
+
+
+<SCRIPT type="text/javascript" src="images/pic.js"></SCRIPT>
+
+<DIV class="ryzs">
+ <!-- run:$hotpic = phpok("picplayera") --><UL id="certt"><!-- $hotpic[rslist] AS $key=>$value -->
+  <LI><img style="width:1000px; height:149px;" src="{:$value[picture]}"></LI>
+  
+ 	<!-- end -->
+			</ul>
+<!-- run:unset($hotpic) -->
+<SCRIPT>new dk_slideplayer("#certt",{width:"1000px",height:"149px",fontsize:"12px",time:"5000"});</SCRIPT>
+</DIV>
+
+
+
+</div>
+<div style=" background:url(images/34.jpg) no-repeat; height:641px; display:block; width:1000px; margin:0 auto;">
+<div style="line-height:40px;"><span>您所在的位置：<a href="index.php">首页</a> 
+          <!-- if($leader && is_array($leader)) --> 
+          <!-- $leader AS $key=>$value --> 
+          <!-- if($value[url]) --> 
+          &raquo; <a href="{:$value[url]}">{:$value[title]}</a> 
+          <!-- end --> 
+          <!-- end --> 
+          <!-- else --> 
+          &raquo; <a href="{:site_url('index')}">网站首页</a> 
+          <!-- end --></span>
+
+</div>
+
+
+<div style=" margin-left:280px; margin-top:250px; color:#553e3e; line-height:30px;">{:$rs[content]}</div>
+
+	</div>
+</div>
+<!-- inc:foot -->

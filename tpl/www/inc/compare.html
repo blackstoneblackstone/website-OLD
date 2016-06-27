@@ -1,0 +1,77 @@
+<style type="text/css">
+    #compare_float{width:111px;position:fixed;*_position:absolute;left:10px;top:100px; border: 1px solid #888; background-color:#d8e0e4; display:none}
+    #ComparBox { border:2px solid #eee; background:#FFF;width:200px; margin:0px auto; padding:8px;position:fixed;*_position:absolute;left:10px;top:100px;}
+    #ComparBox ul{ margin:0px; padding:0px; list-style:none;}
+    #ComparBt{ padding:5px 20px; line-height:20px; text-align:center;}
+    #ComparBt a{ border:1px solid #eee; font-weight:bold; padding:5px;}
+    #ComparBt a:hover{border:1px solid #900; }
+    #ComparBox #title{ border-bottom:2px solid #eee; font-weight:bold; text-align:center; line-height:25px;}
+    #Comparmain{ padding:10px 5px;}
+</style>
+<script type="text/javascript" src="js/jquery.cookie.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $(window).scroll(function() {
+            $("#compare_float").css({top: $(this).scrollTop() + $(this).height() - 500});
+        });
+        $("#ComparList").html($.cookie('cookiesHtml'));
+        bindListener();
+        Adds_mun();
+    });
+    function Adds_mun() {
+        if ($.cookie('ms')) {
+            $("#ComparBox").css('display', '');
+            return _n = $.cookie('ms');
+        } else {
+            $("#ComparBox").css('display', 'none');
+            return _n = 0;
+        }
+    }
+    function bindListener() {
+        $("#ComparList a[name=dels]").unbind().click(function() {
+            $(this).parent().remove();
+            _n--;
+            $.cookie('cookiesHtml', $("#ComparList").html());
+            $.cookie('ms', _n);
+            $("#cookiesHtml").html($.cookie('cookiesHtml'));//cookies演示
+        })
+    }
+
+    function Adds(urls, ids, titles) {
+        Adds_mun();
+        $("#ComparBox").css('display', '');
+        if ($("#ComparList input[value=" + ids + "]").length > 0) {
+            alert("该商品已经添加了！");
+        } else {
+            if (_n < 4) {//可以添加对比的最大为4个
+                _n++;
+                var htmls = "<li><input name=\"id[]\" type=\"hidden\" value=\"" + ids + "\" /><a href=\"" + urls + "\">" + titles + "</a> <a href=\"#\" title=\"点击删除\" name=\"dels\">[ X ]</a></li>"
+                $("#ComparList").append(htmls);
+                $.cookie('cookiesHtml', $("#ComparList").html());
+                $("#cookiesHtml").html($.cookie('cookiesHtml'));//cookies演示
+                bindListener();
+                $.cookie('ms', _n);
+            } else {
+                alert("最多只能同时4个商品对比！");
+            }
+        }
+    }
+    function delcookie() {
+        $.cookie('cookiesHtml', null);
+        $.cookie('ms', null);
+        $("#ComparList").html('暂时没有对比的商品信息');
+    }
+    function clearcookie() {
+        $.cookie('cookiesHtml', null);
+        $.cookie('ms', null);
+    }
+</script>
+<div id="ComparBox" style="display:none;">
+    <form method="post" action="{:site_url('list,compare')}">
+        <div id="title">商品对比</div>
+        <div id="Comparmain">
+            <ul id="ComparList"></ul>
+        </div>
+        <div id="ComparBt"><a href="#" onclick="delcookie();">清除</a> | <button type="submit" onclick="clearcookie()">比较</button></div>
+    </form>
+</div>
