@@ -88,9 +88,9 @@ class msg_c extends Control
 		$this->msg_m->update_hits($rs["id"]);
 		  $his_id = array();
                 $his_id = $_COOKIE['his_id']?unserialize($_COOKIE['his_id']):array();
-                array_unshift($his_id,$id);
-                $his_id = array_unique($his_id);
-                $his_id = array_slice($his_id,0,10);
+//                array_unshift($his_id,$id);
+//                $his_id = array_unique($his_id);
+//                $his_id = array_slice($his_id,0,10);
                 $his_id = serialize($his_id);
                 setcookie('his_id',$his_id, time() + 36000,'/');
 		$this->tpl->display($this->tplfile.".".$this->tpl->ext);

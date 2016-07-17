@@ -4,7 +4,7 @@
 
 
 
-<SCRIPT type="text/javascript" src="tpl/www/images/pic.js"></SCRIPT>
+<SCRIPT type="text/javascript" src="/tpl/www/images/pic.js"></SCRIPT>
 
 <DIV class="ryzs">
  <?php $hotpic = phpok("picplayera");?><UL id="certt"><?php $_i=0;$hotpic[rslist]=(is_array($hotpic[rslist]))?$hotpic[rslist]:array();foreach($hotpic[rslist] AS  $key=>$value){$_i++; ?>
@@ -13,7 +13,7 @@
  	<?php } ?>
 			</ul>
 <?php unset($hotpic);?>
-<SCRIPT>new dk_slideplayer("#certt",{width:"1000px",height:"149px",fontsize:"12px",time:"5000"});</SCRIPT>
+<SCRIPT>new dk_slideplayer("#certt",{width:"1000px",height:"249px",fontsize:"12px",time:"5000"});</SCRIPT>
 </DIV>
 
 

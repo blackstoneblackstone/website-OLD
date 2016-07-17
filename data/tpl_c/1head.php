@@ -1,7 +1,8 @@
 <?php if (!defined('PHPOK_SET')) {
     die('<h3>Error...</h3>');
-}?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+}?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -30,40 +31,55 @@
         var iframe_id = "";
     </script>
     <link rel="stylesheet" type="text/css" href="../../libs/xheditor/xheditor_plugins/plugin.css"/>
-    <link rel="stylesheet" type="text/css" href="tpl/www/images/style.css"/>
-    <script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript" src="js/global.js"></script>
-    <script type="text/javascript" src="js/www.js"></script>
-    <script src="js/jquery.form.js" type="text/javascript"></script>
-    <script src="js/php.js" type="text/javascript"></script>
-    <?php if ($sys_app->control_name && file_exists(ROOT . "js/www/" . $sys_app->control_name . ".js")) { ?>
-        <script type="text/javascript" src="js/www/<?php echo $sys_app->control_name; ?>.js"></script>
+    <link rel="stylesheet" type="text/css" href="/tpl/www/images/style.css"/>
+    <script type="text/javascript" src="/js/jquery.js"></script>
+    <script type="text/javascript" src="/js/global.js"></script>
+    <script type="text/javascript" src="/js/www.js"></script>
+    <script src="/js/jquery.form.js" type="text/javascript"></script>
+    <script src="/js/php.js" type="text/javascript"></script>
+    <?php if ($sys_app->control_name && file_exists(ROOT . "/js/www/" . $sys_app->control_name . ".js")) { ?>
+        <script type="text/javascript" src="/js/www/<?php echo $sys_app->control_name; ?>.js"></script>
     <?php } ?>
 </head>
 
 <body>
+<script src="/js/jquery.waypoints.min.js" type="text/javascript"></script>
+<script src="/js/sticky.min.js" type="text/javascript"></script>
+<script>
+    $(function () {
+        $("#nav").waypoint( function( direction )
+        {
+            console.log("fsf");
+        },{offset:'100%'}
+        );
+    });
 
-<div class="header" style="background: url('tpl/www/images/navbg.png') repeat-x;">
+</script>
+<div class="header" style="background: url('/tpl/www/images/navbg.png') repeat-x;">
     <div style="height:1px;background-color:#ff8c04;width: 100%;"></div>
-    <div class="logo"><img src="<?php echo $_sys[logo] ? $_sys[logo] : 'tpl/www/images/logo.jpg'; ?>"
+
+
+    <div id="nav" style="margin-top:30px;height:80px;background: url('tpl/www/images/navbg.png') repeat-x;">
+    <div class="logo"><img style="height: 80px" src="/<?php echo $_sys[logo] ? $_sys[logo] : '/tpl/www/images/logo.jpg'; ?>"
                            alt="<?php echo $_sys[sitename]; ?>"/>
 
     </div>
     <!--一级导航调用开始-->
     <div class="menu">
-        <ul style="color: #5a6595; height:30px; line-height:30px;width: 900px;float: right; position:relative; margin-top: 50px">
+        <ul style="color: #5a6595; height:30px; margin-top: 25px;line-height:30px;width: 70%;float: right; position:relative; ">
             <?php $menulist = phpok_menu($id, $cid, $mid); ?>
             <?php $_i = 0;
             $menulist = (is_array($menulist)) ? $menulist : array();
             foreach ($menulist AS $key => $value) {
                 $_i++; ?>
                 <li <?php if ($value[my_highlight]) { ?> class="li_a"<?php } ?>><a
-                        href="<?php echo $value[link]; ?>"<?php if ($value[target]) { ?> target="_blank"<?php } ?>
+                        href="<?php echo $value[link]; ?>"<?php if ($value[target]) { ?> target=""<?php } ?>
                         title="<?php echo $value[note] ? $value[note] : $value[title]; ?>"><?php echo $value[title]; ?></a>
                 </li>
             <?php } ?>
             <?php unset($menulist); ?>
         </ul>
+    </div>
     </div>
     <div class="clear"></div>
     <!--一级导航调用开始-->

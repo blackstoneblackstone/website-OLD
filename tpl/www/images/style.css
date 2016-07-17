@@ -177,6 +177,7 @@ h3.protitle {
 .header {
     /*width: 1000px;*/
     margin: 0 auto;
+    height: 110px;
 }
 
 .header .logo {
@@ -188,7 +189,7 @@ h3.protitle {
     display: block;
     float: left;
     height: 80px;
-    margin-top: 25px;
+
     margin-left: 80px;
 }
 
@@ -221,23 +222,29 @@ h3.protitle {
     padding-left: 25px;
     padding-right: 25px;
     padding-bottom: 22px;
+    cursor: pointer;
 }
 
 .header .menu li a {
-    font-family: "微软雅黑";
-    font-size: 14px;
-    font-weight: bold;
-    color: #6875a8;
+      font-family: "微软雅黑";
+      font-size: 14px;
+      font-weight: bold;
+      color: #6875a8;
+  }
+.header .menu li a:hover {
+    color: #ffffff;
 }
-
 .header .menu li:hover {
     border-bottom: 1px solid #ff8c04;
+    color: #ffffff;
 }
 
 .header .menu .li_a  {
     border-bottom: 1px solid #ff8c04;
 }
-
+.header .menu .li_a >a  {
+    color: #ffffff;
+}
 .aa {
     color: #fff;
     background: url(menu_bg01.jpg) no-repeat;
@@ -1114,4 +1121,9 @@ h3.protitle {
 
 .abc:hover {
     color: #fff82b;
+}
+
+.stuck {
+    position:fixed;
+    top:0;
 }

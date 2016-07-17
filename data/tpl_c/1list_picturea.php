@@ -4,16 +4,16 @@
 
 
 
-<SCRIPT type="text/javascript" src="tpl/www/images/pic.js"></SCRIPT>
+<SCRIPT type="text/javascript" src="/tpl/www/images/pic.js"></SCRIPT>
 
 <DIV class="ryzs">
  <?php $hotpic = phpok("picplayera");?><UL id="certt"><?php $_i=0;$hotpic[rslist]=(is_array($hotpic[rslist]))?$hotpic[rslist]:array();foreach($hotpic[rslist] AS  $key=>$value){$_i++; ?>
-  <LI><img style="width:1000px; height:149px;" src="<?php echo $value[picture];?>"></LI>
+  <LI><img style="width:1000px; height:149px;" src="/<?php echo $value[picture];?>"></LI>
   
  	<?php } ?>
 			</ul>
 <?php unset($hotpic);?>
-<SCRIPT>new dk_slideplayer("#certt",{width:"1000px",height:"149px",fontsize:"12px",time:"5000"});</SCRIPT>
+<SCRIPT>new dk_slideplayer("#certt",{width:"1000px",height:"249px",fontsize:"12px",time:"5000"});</SCRIPT>
 </DIV>
 
 
@@ -31,25 +31,60 @@
           <?php } ?></span>
 
 </div>
-	<div style="text-align:center;"><img src="<?php echo $rs[ico];?>" /></div>
-    <table style="width:1000px; margin:0 auto; margin-left:45px;">
-<tr><?php $hotpic = phpok("aa");?><?php $_i=0;$hotpic[rslist]=(is_array($hotpic[rslist]))?$hotpic[rslist]:array();foreach($hotpic[rslist] AS  $key=>$value){$_i++; ?>
-<td ><a class="cpjs" href="index.php?c=msg&id=370" title="<?php echo $value[title];?>"><img src="<?php echo $hotpic[me][small_pic];?>" />
-</a></td>
-<?php } ?><?php unset($hotpic);?>
+	<div style="text-align:center;"><img src="/<?php echo $rs[ico];?>" /></div>
+    <table style="width:1000px; margin:50 auto; margin-left:45px;">
+            <tr style="text-align: center">
+                <td>
+                    <img style="height: 150px" src="/upfiles/201606/22/c03caf417d3b7893.png">
+                    <p style="font-size: 15px;margin-top: 30px;">
+                        超高速波动速读学习法
+                    </p>
+                    <p style="font-size: 13px;margin-top: 15px;color: #b5b5b5;">
+                        <a href="/index.php?c=msg&id=370" class="more" style="cursor:pointer;border: solid #b5b5b5 1px;border-radius: 5px;padding: 5px;"> 了解更多</a>
+                    </p>
+                </td>
 
-<?php $hotpic = phpok("bb");?><?php $_i=0;$hotpic[rslist]=(is_array($hotpic[rslist]))?$hotpic[rslist]:array();foreach($hotpic[rslist] AS  $key=>$value){$_i++; ?>
-<td ><a class="cpjs" href="index.php?c=msg&id=371" title="<?php echo $value[title];?>"><img src="<?php echo $hotpic[me][small_pic];?>" />
-</a></td>
-<?php } ?><?php unset($hotpic);?>
+                <td>
+                    <img style="height: 150px" src="/upfiles/201606/22/546e4526c5825f8b.png">
+                    <p style="font-size: 15px;margin-top: 30px;">
+                        首创全脑思维智能学习法
+                    </p>
+                    <p style="font-size: 13px;margin-top: 15px;color: #b5b5b5;">
+                        <a href="/index.php?c=msg&id=371" class="more" style="cursor:pointer;border: solid #b5b5b5 1px;border-radius: 5px;padding: 5px;"> 了解更多</a>
+                    </p>
+                </td>
 
+                <td>
+                    <img style="height: 150px" src="/upfiles/201606/22/77696eb5ffc3c8c7.png">
+                    <p style="font-size: 15px;margin-top: 30px;">
+                        英语思维智能学习法
+                    </p>
+                    <p style="font-size: 13px;margin-top: 15px;color: #b5b5b5;">
+                        <a href="/index.php?c=msg&id=372" class="more" style="cursor:pointer;border: solid #b5b5b5 1px;border-radius: 5px;padding: 5px;"> 了解更多</a>
+                    </p>
+                </td>
 
-<?php $hotpic = phpok("cc");?><?php $_i=0;$hotpic[rslist]=(is_array($hotpic[rslist]))?$hotpic[rslist]:array();foreach($hotpic[rslist] AS  $key=>$value){$_i++; ?>
-<td ><a class="cpjs" href="index.php?c=msg&id=372" title="<?php echo $value[title];?>"><img src="<?php echo $hotpic[me][small_pic];?>" />
-</a></td>
-<?php } ?><?php unset($hotpic);?>
+                <td>
+                    <img style="height: 150px" src="/upfiles/201606/22/9d428f7ddb11b551.png">
+                    <p style="font-size: 15px;margin-top: 30px;">
+                        思维导图学习法
+                    </p>
+                    <p style="font-size: 13px;margin-top: 15px;color: #b5b5b5;">
+                        <a href="/index.php?c=msg&id=522" class="more" style="cursor:pointer;border: solid #b5b5b5 1px;border-radius: 5px;padding: 5px;"> 了解更多</a>
+                    </p>
+                </td>
 
-</tr>
+                <td>
+                    <img style="height: 150px" src="/upfiles/201606/22/2d9f893c7ed0e66f.png">
+                    <p style="font-size: 15px;margin-top: 30px;">
+                        新学霸学习法
+                    </p>
+                    <p style="font-size: 13px;margin-top: 15px;color: #b5b5b5;">
+                        <a href="/index.php?c=msg&id=523" class="more" style="cursor:pointer;border: solid #b5b5b5 1px;border-radius: 5px;padding: 5px;"> 了解更多</a>
+                    </p>
+                </td>
+
+            </tr>
 </table>
   <div style="width:891px; margin:0 auto;">
     <ul class="ul_list_g">
@@ -96,7 +131,7 @@
       <li>训练内容： 脑力训练包括（各类记忆法）、高层智慧冥想训练、放松减压缓解失眠</li>
     </ul>
   </div>
-  <div style="text-align:center; margin-top:20px;"><img src="tpl/www/images/kctx_02.jpg" /></div>
+  <div style="text-align:center; margin-top:20px;"><img src="/tpl/www/images/kctx_02.jpg" /></div>
 
 </div>
 <?php $APP->tpl->p("foot","","0");?>

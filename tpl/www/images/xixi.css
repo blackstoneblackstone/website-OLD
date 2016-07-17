@@ -84,3 +84,7 @@
     background: #0096db
 }
 
+.more:hover{
+    background-color: #0096db;
+    color: #ffffff;
+}
